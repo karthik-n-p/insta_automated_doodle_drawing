@@ -1,105 +1,111 @@
-# Auto Sketch Drawer — Instagram DM Doodle Edition
+# Instagram Direct Messaging Automaton for Sketches
 
-An automated drawing tool that converts any image (photo or illustration) into clean, doodle-style outlines and draws them on any canvas via mouse automation.
+This repository provides an algorithmic engine engineered to transform ordinary photographs or illustrations into streamlined, single-stroke drawing instructions. The script subsequently interfaces directly with your machine's input stream, physically reproducing the computed path onto any digital painting interface. It is uniquely tailored for generating sketches inside the miniature, mobile-oriented Instagram Direct Message canvas via desktop sharing.
 
-This tool is explicitly optimised for the small, vertical **Instagram Direct Message doodle canvas**.
+## Capabilities & Engineering Focus
 
-## Key Features
+*   **Designed for Miniature Interfaces**: The application prioritizes aggressive downsizing and noise eradication, preventing visual clutter when drawing on confined pixel dimensions.
+*   **Intelligent Stroke Connections**: An embedded path-linking protocol evaluates endpoint proximity to merge separated curves, drastically decreasing the duration the emulated stylus spends hovering between strokes.
+*   **Dynamic Visual Evaluation**: Validate your computational outputs through a preliminary visualizer window, avoiding botched executions on a live canvas.
+*   **Fail-Safe Interventions**: Physical keyboard hooks intercept processes instantaneously—providing on-demand halting or permanent cancellation mechanisms.
+*   **Coordinate Calibration System**: An interactive loop secures physical screen coordinates to ensure the drawing strictly persists within a designated software container.
 
-- **Instagram DM Optimized**: Aggressive downscaling, smoothing, and feature removal (no shading, no texture dots) to keep doodles looking clean on small canvases.
-- **Path Linking engine**: Connects fragmented paths to dramatically reduce pen-lift travel time, resulting in faster and smoother drawings.
-- **Multiscale Edge Detection**: Tuned Canny edge detection with detail thresholds.
-- **Automatic Drawing**: Automates your mouse to draw the detected polylines continuously.
-- **Preview & Dry Run**: Generate a preview image to verify the doodle before moving your mouse.
-- **Interactive Canvas Calibration**: Defines canvas boundaries safely via hotkeys.
-- **Abortion & Pause Supports**: F6 to pause, F7 to abort at any time.
+## Algorithmic Pipeline & Mathematical Approaches
 
-## Requirements
+The conversion of a dense, rasterized image into a sequential drawing path involves a robust mathematical sequence:
 
-- Python 3.7+
-- Windows, macOS, or Linux
-- Administrator/root privileges (for keyboard hotkeys on some operating systems)
+1.  **Adaptive Histogram Equalization (CLAHE)**: Initial normalization stabilizes the structural contrast, mitigating the impacts of overly exposed or underexposed elements in amateur photography.
+2.  **Topological Smoothing**: A heavy bilateral filter flattens chromatic variations while respecting hard structural dividers, followed by median blurring to obliterate microscopic textures (like skin pores or clothing weave).
+3.  **Contour Harvesting (Canny)**: The application deploys adjustable Canny threshold limits, allowing structural borders to emerge while disregarding insignificant gradients.
+4.  **Morphological Bridging & Filtering**: Elliptical closing kernels seal microscopic fractures in the lines, and a Connected Components analysis dynamically rips out orphaned graphical clusters utilizing area thresholds.
+5.  **Skeletonization**: The dense borders are mathematically constrained down to a unilinear centerline, stripping thickness into a purely one-dimensional mathematical instruction set.
+6.  **Path Routing Optimization**: A heuristic routing algorithm sequentially organizes the stroke commands top-to-bottom and links contiguous terminations (greedy metric approximation), minimizing non-drawing transit periods for maximum speed.
 
-## Installation
+## Prerequisites for Operation
 
-1. Clone or download this repository.
-2. Install the required dependencies:
+*   A local installation of Python version 3.7 or newer.
+*   A functioning workstation on Windows, Apple macOS, or an X11-based Linux environment.
+*   Administrative execution permissions, strictly to grant global intercept capabilities for the physical keyboard hooks.
+
+## System Deployment
+
+Clone the source code onto your local drive and initialize the Python libraries via the standard package manager protocol:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-*Note: On Windows, run your terminal as Administrator for the keyboard hotkeys to accurately register during calibration and drawing.*
+*Attention Windows Administrators: You must invoke your command prompt with elevated administrative rights to enable the failsafe trigger mapping to function properly.*
 
-## Usage
+## Operational Walkthrough (Phone Link Integration)
 
-### Instagram Doodle via Windows Phone Link
+The software excels entirely when bridged to an active mobile instance, particularly using the Windows Phone Link application to transmit inputs directly into the Instagram ecosystem. 
 
-This tool is perfect for drawing automated sketches on Instagram Direct Message doodles using the Windows Phone Link app.
+1.  Initialize the **Windows Phone Link** client and project your device's interface onto your desktop monitor.
+2.  Navigate specifically to your targeted Instagram dialogue and activate the freehand sketch interface.
+3.  Prime your digital pen thickness and designated pigment.
+4.  Launch the execution engine against your desired target file via your terminal (`python main.py --image your_photo.jpg`).
+5.  As the spatial boundary mapping sequence triggers:
+    *   Position your cursor precisely over the topmost left pixel of your target drawing region and tap **F8**.
+    *   Mirror this process by positioning the cursor over the furthest bottom right pixel and trigger **F9**.
+    *   Lock in the coordinates and unleash the drawing sequence by engaging **F10**.
 
-1. Open the **Windows Phone Link** app and mirror your phone screen to your PC.
-2. Navigate into an Instagram chat and open the **doodle canvas**.
-3. Select your brush and color.
-4. Run the script with your desired image via terminal (e.g., `python main.py --image path/to/your/image.jpg`).
-5. When the calibration step starts:
-   - Hover your mouse over the **top-left corner** of the doodle canvas and press **F8**.
-   - Hover your mouse over the **bottom-right corner** of the doodle canvas and press **F9**.
-   - Press **F10** to confirm the drawing area and start the drawing process!
+## Configuration Dictionary
 
-## Command Line Options
+The runtime supports an extensive spectrum of flags to modulate the algorithm's behavior.
 
-### Core Options
-- `--image` (required): Path to the input image file (photo or illustration).
-- `--detail`: Outline detail level - `low` (minimal lines), `med` (default), or `high` (more lines).
-- `--speed`: Drawing speed multiplier (default: 1.0). Higher values draw faster.
-- `--fit`: How the image maps onto the canvas - `contain` (default, preserves ratio) or `fill` (fills canvas).
-- `--invert`: Invert colors before edge detection (useful for dark backgrounds).
-- `--dry-run`: Compute paths completely without moving the mouse to ensure safety.
-- `--preview`: Show a preview window of the generated doodle before drawing.
-- `--save-preview`: Path to save the preview image (e.g., `preview.png`).
+### Foundational Parameters
+*   `--image` (Mandatory): The absolute or relative trajectory pointing toward your source graphic.
+*   `--detail`: Architectural fidelity setting consisting of `low` (bare minimum boundaries), `med` (factory standard), and `high` (dense contour discovery).
+*   `--speed`: Operational multiplier overriding default execution bounds. Values exceeding 1.0 accelerate the robotic output.
+*   `--fit`: Mapping proportion toggle. Deploy `contain` to lock original proportions or `fill` to stretch data across the target space.
+*   `--invert`: Reverses luminosity scaling algorithms prior to evaluation, saving the system when analyzing inverted or dark-mode compositions.
+*   `--dry-run`: Generates path math without injecting mouse instructions into the operating system.
+*   `--preview`: Prompts a local visualizer rendering the geometric outcome prior to mechanical execution.
+*   `--save-preview`: Specifies a destination output file for exporting the computed stroke schematic (e.g., `schematic.png`).
 
-### Advanced Tuning Options
-- `--max-dim` (default: 500): Downscale image so the longest side is at most this many pixels (ideal for IG's canvas).
-- `--link-dist` (default: 8.0): Max pixel distance to automatically link nearby path endpoints.
-- `--min-path-len` (default: 25): Discard small, isolated paths shorter than this length in pixels.
-- `--pps` (default: 1200): Target points per second limit to pace the dragging operations.
-- `--max-stroke-len` (default: 800): Break down continuous paths into maximum lengths for mouse buffer safety.
-- `--spacing-px` (default: 2): Max pixel gap between resampled points in a path.
-- `--drag-duration` (default: 0.0): Add forced duration latency for drag steps.
-- `--use-move`: Use `mouseDown` + `moveTo` instead of `dragTo` for apps that handle move events better.
+### Engine Calibration Switches
+*   `--max-dim` (defaulting to 500): Instructs the pre-processor to collapse image bounds preventing memory or operational overflows.
+*   `--link-dist` (defaulting to 8.0): The maximum radial tolerance deployed by the routing engine to artificially merge shattered geometry endpoints.
+*   `--min-path-len` (defaulting to 25): A destructive filter threshold discarding short, visually insignificant line fragments.
+*   `--pps` (defaulting to 1200): Coordinates emitted toward the system bus every simulated second, stabilizing input buffers.
+*   `--max-stroke-len` (defaulting to 800): Chunks unbroken operations into arrays to bypass operating system buffer lockouts.
+*   `--spacing-px` (defaulting to 2): Internal pixel gaps retained during final vector interpolation sweeps.
+*   `--drag-duration` (defaulting to 0.0): Injects physical delays between linear traversals.
+*   `--use-move`: Bypasses the native `dragTo` API, substituting a `mouseDown` supplemented sequential traversal loop if the primary instruction gets discarded by native applications.
 
-## Example Commands
+## Execution Scenarios
 
 ```bash
-# Basic drawing with a setup preview
-python main.py --image path/to/your/image.jpg --preview
+# Standard workflow encompassing visual confirmation
+python main.py --image photo.jpg --preview
 
-# High detail, 50% drawing speed
-python main.py --image path/to/your/image.jpg --detail high --speed 0.5
+# Detailed mapping rendered efficiently at halved velocity
+python main.py --image photo.jpg --detail high --speed 0.5
 
-# Minimal paths, fill ratio, and export preview
-python main.py --image path/to/your/image.jpg --detail low --fit fill --save-preview preview.png
+# Maximum spatial utilization paired with schematic logging
+python main.py --image photo.jpg --detail low --fit fill --save-preview preview.png
 
-# Dry run to test path extraction
-python main.py --image path/to/your/image.jpg --dry-run --preview
+# Algorithmic pathing diagnostic run
+python main.py --image photo.jpg --dry-run --preview
 ```
 
-## Controls During Execution
+## Physical System Interrupts
 
-- **F8**: Set top-left bounds of the canvas
-- **F9**: Set bottom-right bounds of the canvas
-- **F10**: Confirm calibration and execute draw loop
-- **F6**: Pause/Resume drawing
-- **F7**: Abort drawing entirely
-- **ESC**: Cancel calibration loop
+*   **F8**: Registers the minimal boundary coordinates.
+*   **F9**: Registers the maximal boundary coordinates.
+*   **F10**: Commits structural bounds and fires the robotic process.
+*   **F6**: Toggles the suspension of current mechanical actions.
+*   **F7**: Commands an immediate system death for the robotic output.
+*   **ESC**: Nullifies the boundary staging loop entirely.
 
-## Troubleshooting
+## System Fault Troubleshooting
 
-- **Hotkeys not registering**: Ensure your terminal is running as an Administrator.
-- **Drawing too fast or missing details**: Reduce `--speed` or lower `--pps`.
-- **Canvas app acts weird**: Try passing the `--use-move` flag.
-- **No lines detected**: Try passing `--invert` if your source image has a dark background with light contours.
+*   **Lethargic Key Recognition**: Escalate your terminal application to root/administrative access level.
+*   **Erratic Line Emission Processing**: Attenuate the mechanical throughput by shrinking the `--speed` ratio or dragging down the `--pps` configuration.
+*   **Target Interface Rejection**: Counteract native drag dismissal by invoking `--use-move`.
+*   **Missing Topological Signatures**: Inject the `--invert` modifier if dealing with a high-contrast negative composition, or ramp detail levels upwards.
 
-## License
+## Distribution Protocol
 
-This project is provided as-is for personal and educational use.
+These computational structures are released entirely as-is, oriented around investigative experimentation, educational observation, and individual deployment.
