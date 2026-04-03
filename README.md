@@ -47,7 +47,7 @@ This tool is perfect for drawing automated sketches on Instagram Direct Message 
 ### Basic Usage
 
 ```bash
-python draw_sketch.py --image path/to/your/image.jpg
+python main.py --image path/to/your/image.jpg
 ```
 
 ### Command Line Options
@@ -70,16 +70,16 @@ python draw_sketch.py --image path/to/your/image.jpg
 
 ```bash
 # Basic drawing with preview
-python draw_sketch.py --image frieren.PNG --preview
+python main.py --image path/to/your/image.jpg --preview
 
 # High detail, slower speed
-python draw_sketch.py --image maomao.PNG --detail high --speed 0.5
+python main.py --image path/to/your/image.jpg --detail high --speed 0.5
 
 # Inverted image, fill canvas
-python draw_sketch.py --image frieren-2.PNG --invert --fit fill
+python main.py --image path/to/your/image.jpg --invert --fit fill
 
 # Dry run to test without drawing
-python draw_sketch.py --image frieren-3.jpg --dry-run --preview
+python main.py --image path/to/your/image.jpg --dry-run --preview
 ```
 
 ## How It Works
