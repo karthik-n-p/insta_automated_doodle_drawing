@@ -1,4 +1,4 @@
-# Instagram Direct Messaging Automaton for Sketches
+# Instagram DM Automaton for doodles
 
 This repository provides an algorithmic engine engineered to transform ordinary photographs or illustrations into streamlined, single-stroke drawing instructions. The script subsequently interfaces directly with your machine's input stream, physically reproducing the computed path onto any digital painting interface. It is uniquely tailored for generating sketches inside the miniature, mobile-oriented Instagram Direct Message canvas via desktop sharing.
 
